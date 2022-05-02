@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Array Cardio 💪</title>
 </head>
+
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
   <script>
@@ -34,29 +36,33 @@
       'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
-    
+
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-      var inventorsFrom1500 = inventors.filter(
-        (x) => {
-           if(x.year >= 1500 && x.year < 1600){
-             return x;
+    var inventorsFrom1500 = inventors.filter(
+      (x) => {
+        if (x.year >= 1500 && x.year < 1600) {
+          return x;
 
-           }
-        });
-      
-      console.log(inventorsFrom1500);
+        }
+      });
+
+    console.log("Inventors from the 1500s:");
+    console.log(inventorsFrom1500);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-      var inventorsFNameLName = inventors.map((x) =>{
-        return {first: x.first, last: x.last};
-      });
-
-      console.log(inventorsFNameLName);
+    var inventorsFNameLName = inventors.map((x) => { return { first: x.first, last: x.last } });
+    
+    console.log("Inventors first and last names:");
+    console.log(inventorsFNameLName);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    var inventorsOldToYoung = inventors.sort((x, z) => { return x.year - z.year });
+    
+    console.log("Inventors sorted from oldest to youngest:");
+    console.log(inventorsOldToYoung);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
@@ -72,8 +78,9 @@
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
   </script>
 </body>
+
 </html>
