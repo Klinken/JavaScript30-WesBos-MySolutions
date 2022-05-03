@@ -9,7 +9,10 @@
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
   <div class="mw-category mw-category-columns"><div class="mw-category-group"><h3>&nbsp;</h3>
-    <ul><li><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle CategoryTreeToggleHandlerAttached" data-ct-title="Boulevards_des_Maréchaux" data-ct-state="collapsed" title="expand"></span> </span> <a href="/wiki/Category:Boulevards_des_Mar%C3%A9chaux" title="Category:Boulevards des Maréchaux">Boulevards des Maréchaux</a>‎ <span title="Contains 23 subcategories, 0 pages, and 6 files" dir="ltr">(23 C,  6 F)</span></div><div class="CategoryTreeChildren" style="display:none"></div></div></li>
+    <ul><li><div class="CategoryTreeSection">
+      <div class="CategoryTreeItem">
+        <span class="CategoryTreeBullet">
+          <span class="CategoryTreeToggle CategoryTreeToggleHandlerAttached" data-ct-title="Boulevards_des_Maréchaux" data-ct-state="collapsed" title="expand"></span> </span> <a href="/wiki/Category:Boulevards_des_Mar%C3%A9chaux" title="Category:Boulevards des Maréchaux">Boulevards des Maréchaux</a>‎ <span title="Contains 23 subcategories, 0 pages, and 6 files" dir="ltr">(23 C,  6 F)</span></div><div class="CategoryTreeChildren" style="display:none"></div></div></li>
     <li><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle CategoryTreeToggleHandlerAttached" data-ct-title="Boulevards_du_Midi" data-ct-state="collapsed" title="expand"></span> </span> <a href="/wiki/Category:Boulevards_du_Midi" title="Category:Boulevards du Midi">Boulevards du Midi</a>‎ <span title="Contains 6 subcategories, 0 pages, and 10 files" dir="ltr">(6 C,  10 F)</span></div><div class="CategoryTreeChildren" style="display:none"></div></div></li></ul></div><div class="mw-category-group"><h3>A</h3>
     <ul><li><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle CategoryTreeToggleHandlerAttached" data-ct-title="Boulevard_Adolphe-Pinard_(Paris)" data-ct-state="collapsed" title="expand"></span> </span> <a href="/wiki/Category:Boulevard_Adolphe-Pinard_(Paris)" title="Category:Boulevard Adolphe-Pinard (Paris)">Boulevard Adolphe-Pinard (Paris)</a>‎ <span title="Contains 1 subcategory, 0 pages, and 7 files" dir="ltr">(1 C,  7 F)</span></div><div class="CategoryTreeChildren" style="display:none"></div></div></li>
     <li><div class="CategoryTreeSection"><div class="CategoryTreeItem"><span class="CategoryTreeBullet"><span class="CategoryTreeToggle CategoryTreeToggleHandlerAttached" data-ct-title="Boulevard_d'Algérie_(Paris)" data-ct-state="collapsed" title="expand"></span> </span> <a href="/wiki/Category:Boulevard_d%27Alg%C3%A9rie_(Paris)" title="Category:Boulevard d'Algérie (Paris)">Boulevard d'Algérie (Paris)</a>‎ <span title="Contains 2 subcategories, 0 pages, and 29 files" dir="ltr">(2 C,  29 F)</span></div><div class="CategoryTreeChildren" style="display:none"></div></div></li>
@@ -196,7 +199,13 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    
+    var boulevards = [];
+    document.querySelectorAll(".CategoryTreeItem > a").forEach((x) => boulevards.push(x.innerText));
 
+    boulevards.filter(x => {return x == "Boulevard des Batignolles (Paris)"});
+
+    console.log(boulevards.filter(x => {return x == }));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
