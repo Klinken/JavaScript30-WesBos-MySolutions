@@ -198,21 +198,25 @@
     console.log(inventorsYearsLived);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-    
+    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris 
     var boulevards = [];
+    var regex = /de/ig;
+    
     document.querySelectorAll(".CategoryTreeItem > a").forEach((x) => boulevards.push(x.innerText));
 
-    boulevards.filter(x => {return x == "Boulevard des Batignolles (Paris)"});
-
-    console.log(boulevards.filter(x => {return x == }));
+    console.log(boulevards.filter(x => {return regex.test(x)}));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    console.log(people.sort());
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+    
+    var sortedData = data.sort().filter((cV, index, arr) => {return cV != arr[index - 1]});
+
+    console.log(sortedData);
 
   </script>
 </body>
