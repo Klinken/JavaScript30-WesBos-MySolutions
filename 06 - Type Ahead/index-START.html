@@ -8,7 +8,7 @@
 <body>
 
   <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
+    <input id="text-field" type="text" class="search" placeholder="City or State">
     <ul class="suggestions">
       <li>Filter for a city</li>
       <li>or a state</li>
@@ -16,16 +16,24 @@
   </form>
   <div id="text"></div>
 <script>
+
+
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
-let array = [];
+var textField = document.getElementById("text-field");
+var dataToUse;
+
+// GET DATA FROM WEBSITE
 fetch(endpoint)
 .then(response => response.json())
 .then(
-  data => data.forEach(e => {
-    array.push(`${e.city},${e.state}`)
-  }));
+  data => dataToUse = data
+  );
 
-console.log(array);
+// GET DATA FROM INPUT FIELD
+document.getElementById("text-field").addEventListener("input",
+() => {
+  console.log(textField.value);
+});
 
 </script>
 </body>
