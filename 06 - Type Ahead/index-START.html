@@ -20,6 +20,7 @@
 
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 var textField = document.getElementById("text-field");
+var suggestions = document.getElementsByClassName("suggestions")[0];
 var dataToUse;
 
 // GET DATA FROM WEBSITE
@@ -33,13 +34,19 @@ fetch(endpoint)
 document.getElementById("text-field").addEventListener("input",
 () => {
   var regex = new RegExp(textField.value, "ig");
-
-  dataToUse.filter((x) => { 
+  suggestions.innerHTML = "";
+  
+  if(textField.value != ""){
+    dataToUse.filter((x) => { 
     if(regex.test(x.city) || regex.test(x.state)){
-      document.getElementsByClassName("suggestions")[0].innerHTML += 
+      suggestions.innerHTML += 
       `<li>${x.city}, ${x.state}<span class="population">${x.population}</span></li>`;
     }
   });
+  } else {
+      suggestions.innerHTML = "<li>Filter for a city</li><li>or a state</li>";
+    }
+
 });
 
 </script>
