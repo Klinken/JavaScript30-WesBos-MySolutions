@@ -32,7 +32,14 @@ fetch(endpoint)
 // GET DATA FROM INPUT FIELD
 document.getElementById("text-field").addEventListener("input",
 () => {
-  console.log(textField.value);
+  var regex = new RegExp(textField.value, "ig");
+
+  dataToUse.filter((x) => { 
+    if(regex.test(x.city) || regex.test(x.state)){
+      document.getElementsByClassName("suggestions")[0].innerHTML += 
+      `<li>${x.city}, ${x.state}<span class="population">${x.population}</span></li>`;
+    }
+  });
 });
 
 </script>
