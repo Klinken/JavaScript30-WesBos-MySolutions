@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Type Ahead 👀</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <form class="search-form">
@@ -15,40 +17,55 @@
     </ul>
   </form>
   <div id="text"></div>
-<script>
+  <script>
 
 
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
-var textField = document.getElementById("text-field");
-var suggestions = document.getElementsByClassName("suggestions")[0];
-var dataToUse;
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+    var textField = document.getElementById("text-field");
+    var suggestions = document.getElementsByClassName("suggestions")[0];
+    var dataToUse;
 
-// GET DATA FROM WEBSITE
-fetch(endpoint)
-.then(response => response.json())
-.then(
-  data => dataToUse = data
-  );
+    // GET DATA FROM WEBSITE
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(
+        data => dataToUse = data
+      );
 
-// GET DATA FROM INPUT FIELD
-document.getElementById("text-field").addEventListener("input",
-() => {
-  var regex = new RegExp(textField.value, "ig");
-  suggestions.innerHTML = "";
-  
-  if(textField.value != ""){
-    dataToUse.filter((x) => { 
-    if(regex.test(x.city) || regex.test(x.state)){
-      suggestions.innerHTML += 
-      `<li>${x.city}, ${x.state}<span class="population">${x.population}</span></li>`;
-    }
-  });
-  } else {
-      suggestions.innerHTML = "<li>Filter for a city</li><li>or a state</li>";
-    }
+    // GET DATA FROM INPUT FIELD
+    document.getElementById("text-field").addEventListener("input",
+      () => {
+        var regex = new RegExp(textField.value, "ig");
+        suggestions.innerHTML = "";
 
-});
+        if (textField.value != "") {
 
-</script>
+          dataToUse.filter((x) => {
+            if (
+              regex.test(x.city) ||
+              regex.test(x.state)
+            ) {
+              suggestions.innerHTML +=
+                `<li>${x.city}, ${x.state}<span class="population">${x.population}</span></li>`;
+
+            }
+          });
+        } else {
+          suggestions.innerHTML = "<li>Filter for a city</li><li>or a state</li>";
+
+        }
+      });
+
+      function highlight(string, regex, searchTerm) {
+        let startPosition = string.search(regex);
+        let endPosition = startPosition + searchTerm.length + 1;
+        let stringToArr = string.split("");
+        stringToArr.splice(startPosition,0, "<span ='hl'>").splice(endPosition,0,"</span>")
+
+        return stringToArr.join("");
+      }
+
+  </script>
 </body>
+
 </html>
