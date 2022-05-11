@@ -45,8 +45,10 @@
               regex.test(x.city) ||
               regex.test(x.state)
             ) {
+              let hlCity = highlight(x.city, regex, textField.value);
+              let hlState = highlight(x.state, regex, textField.value);
               suggestions.innerHTML +=
-                `<li>${x.city}, ${x.state}<span class="population">${x.population}</span></li>`;
+                `<li><span>${hlCity}, ${hlState}</span><span class="population">${x.population}</span></li>`;
 
             }
           });
@@ -56,14 +58,18 @@
         }
       });
 
-      function highlight(string, regex, searchTerm) {
-        let startPosition = string.search(regex);
-        let endPosition = startPosition + searchTerm.length + 1;
+    function highlight(string, regex, searchTerm) {
+      let startPosition = string.search(regex);
+      let endPosition = startPosition + searchTerm.length + 1;
+      if (startPosition != -1) {
         let stringToArr = string.split("");
-        stringToArr.splice(startPosition,0, "<span ='hl'>").splice(endPosition,0,"</span>")
+        stringToArr.splice(startPosition, 0, "<span class='hl'>");
+        stringToArr.splice(endPosition, 0, "</span>");
 
         return stringToArr.join("");
       }
+      return string;
+    }
 
   </script>
 </body>
