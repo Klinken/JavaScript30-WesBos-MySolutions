@@ -96,6 +96,14 @@
   </div>
 
 <script>
+
+var checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+checkboxes.forEach(x => x.addEventListener("click", () => {console.log("Working")}));
+
+checkboxes.forEach(x => x.checked = true);
+
+
 </script>
 </body>
 </html>
