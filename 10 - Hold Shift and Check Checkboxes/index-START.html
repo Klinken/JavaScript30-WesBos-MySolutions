@@ -99,9 +99,21 @@
 
 var checkboxes = document.querySelectorAll("input[type='checkbox']");
 
-checkboxes.forEach(x => x.addEventListener("click", () => {console.log("Working")}));
+checkboxes.forEach(x => x.addEventListener("click", () => {
+  console.log("Working");
+  checkForTrue();
+}));
 
-checkboxes.forEach(x => x.checked = true);
+function checkForTrue() {
+for (let i = 0; i < checkboxes.length; i++) {
+  if(checkboxes[i].checked == true){
+    break;
+  } else {
+    checkboxes[i].checked = true;
+  }
+}
+  
+}
 
 
 </script>
